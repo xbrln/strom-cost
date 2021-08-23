@@ -1,6 +1,16 @@
 (ns strom-cost.core)
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defn calculate
+  "Function to calculate electricity cost for an appliance.
+  The input map should have :appliance-wattage, :price-per-kWh, :currency and :usage-in-hours keywords and their values.
+  Function returs the input map with an additional :cost keyword which holds the value for the cost of electricity"
+  [i]
+  (let [cost
+        (Float/parseFloat (format "%.2f" (* (/ (* (:appliance-wattage i) (* 3600 (:usage-in-hours i))) 3600000) (:price-per-kWh i))))]
+    (conj i [:cost cost])))
+
+(comment
+  (calculate {:appliance-wattage 19
+              :price-per-kWh 0.3055
+              :currency "Euro"
+              :usage-in-hours 120}))
