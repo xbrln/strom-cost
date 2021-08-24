@@ -4,7 +4,13 @@ A Clojure library designed to calculate the electricity cost for an appliance.
 
 ## Usage
 
-FIXME
+- Add to your leiningen dependencies in project.clj
+`[xbrln/strom-cost "0.1.0"]`
+- Require in your code `[strom-cost.core :as sc]`
+- Example use `(sc/calculate {:appliance-wattage 19
+                              :price-per-kWh 0.3055
+                              :currency "Euro"
+                              :usage-in-hours 120})`
 
 ## License
 
